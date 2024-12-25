@@ -3,20 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Now</title>
-    <link rel="stylesheet" href="/CSS/styleforShopnow.css">
-    <link rel="shortcut icon" href="/pics/Screenshot_2024-12-24_150501-removebg-preview.png" type="image/x-icon">
-    
+    <title>Search</title>
+    <link rel="stylesheet" href="styleSearch.css">
+<link rel="shortcut icon" href="Screenshot_2024-12-24_150501-removebg-preview.png" type="image/x-icon">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $("input").click(function(){
-            window.location.href="/HTML/searchTable.html";
-        })
-    })
-</script>
+    <script>
+         $(document).ready(function(){   
+          $("#search").css("width","900px");
+          $("#header-items a").hide()
+
+           $("#search").click(function(){
+            $("#header-items a").toggle();
+            $(this).css("width","900px");
+            if($("#header-items a").is(":visible")){
+                $("#search").css("width","400px")
+            }
+           })
+           $("#search").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("tbody tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value)>-1)
+            });
+          });
+          
+         $(".addToCart").click(function(){
+          
+            $(".cart-ping").css("display","block");
+            $(this).text("Remove");
+            $(this).css("background-color","red");
+             $(this).closest("td").find(".holder").clone().prependTo  (".cart-div");
+             $(".cart-div .addToCart").css({"position":"relative","left":"-20%"});
+         });
+
+         $(".cart-div").on("click",".holder",function(){
+            $(this).remove();
+            $(".addToCart").text("Add to Cart");
+            $(".addToCart").css("background-color","black");
+         });
+
+         $(".cart").click(function(){
+            $(".cart-div").toggleClass("cart-appear");
+            $(".cart-ping").css("display","none");
+         });
+         
+         
+        });
+    </script>
 </head>
 <body>
+    <span class="cart-ping">
+
+    </span>
+  <div class="cart-div">
+    <a href="thankYou.html"><button>CHECKOUT</button></a>
+  </div>
     <div id="main" style="background-color: white;overflow-x:hidden;">
         <div id="header">
             <center style="color: rgb(255, 255, 255);">Under Development</center>
@@ -36,198 +76,277 @@
            </div>
           </div>
         </div>
-        <div class="shopnow-page">
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/fitjacket.png" alt="" srcset="" style="position:relative;left:5px">
-                </div>
-                <div class="info-card">
-                    <h4>H&M CLASSIC SHIRT</h4>
-                    <h4>$123</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/girlviscousedress.png" alt="" srcset="" style="position:relative;left:60px">
-                </div>
-                <div class="info-card">
-                    <h4>Viscouse Dress</h4>
-                    <h4 style="position:relative;left: 20%;">$60</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/babywintercap.png" alt="" srcset="">
-                </div>
-                <div class="info-card">
-                    <h4>Baby Winter Cap</h4>
-                    <h4 style="position:relative;left: 17%;">$12</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/girlribbedcottontop.png" alt="" srcset="" style="position:relative;left:20px">
-                </div>
-                <div class="info-card">
-                    <h4>Ribbed Cotton Top</h4>
-                    <h4 style="position:relative;left: 10%;">$34</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/sweater.png" alt="" srcset=""
-                    style="position:relative;left:10px">
-                </div>
-                <div class="info-card">
-                    <h4>Sweater</h4>
-                    <h4 style="position:relative;left: 40%;">$53</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/shorttextureddress.png" alt="" srcset="" style="position:relative;left:30px" >
-                </div>
-                <div class="info-card">
-                    <h4>Short Texture Dress</h4>
-                    <h4 style="position:relative;left: 10%;">$24</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/S2.png" alt="" srcset=""
-                    style="position:relative;left:10px">
-                </div>
-                <div class="info-card">
-                    <h4>Cotton T-shirt</h4>
-                    <h4 style="position:relative;left: 25%;">$13</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/OS.png" alt="" srcset=""
-                    style="position:relative;left:10px">
-                </div>
-                <div class="info-card">
-                    <h4>BLACK-Hoodie</h4>
-                    <h4 style="position:relative;left: 17%;">$23</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/N.png" alt="" srcset="">
-                </div>
-                <div class="info-card">
-                    <h4>Normal T-shirt</h4>
-                    <h4 style="position:relative;left: 20%;">$4</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/lj2.png" alt="" srcset=""
-                    style="position:relative;left:65px">
-                </div>
-                <div class="info-card">
-                    <h4>Denimn Jeans</h4>
-                    <h4 style="position:relative;left: 20%;">$123</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/L.png" alt="" srcset="">
-                </div>
-                <div class="info-card">
-                    <h4>Ashish Special Shirt</h4>
-                    <h4 style="position:relative;left: 5%;">$68</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/girlskirt.png" alt="" srcset=""style="position:relative;left:60px">
-                </div>
-                <div class="info-card">
-                    <h4>Girl-One-Piece-Dress</h4>
-                    <h4 style="position:relative;left: 5%;">$123</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/girlonepieceshortdress.png" alt="" srcset="" style="position:relative;left:30px">
-                </div>
-                <div class="info-card">
-                    <h4>One-Piece-Short-Dress</h4>
-                    <h4>$27</h4>
-                </div>
-            </div>
-            
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/girlpeasant dress.png" alt="" srcset="">
-                </div>
-                <div class="info-card">
-                    <h4>Baby Girl</h4>
-                    <h4 style="position:relative;left: 30%;">$56</h4>
-                </div>
-            </div>
-            
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/girlminileatherbag.png" alt="" srcset="">
-                </div>
-                <div class="info-card">
-                    <h4>Leather Bag (Black)</h4>
-                    <h4>$13</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/girldenimdress.png" alt="" srcset="" style="position:relative;left:40px">
-                </div>
-                <div class="info-card">
-                    <h4>Denimn Dress</h4>
-                    <h4 style="position:relative;left: 20%;">$53</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/flannelshirt.png" alt="" srcset="" style="position:relative;left:10px">
-                </div>
-                <div class="info-card">
-                    <h4>Flannel Shirt</h4>
-                    <h4 style="position:relative;left: 20%;">$73</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/tweed overshirt.png" alt="" srcset="" style="position:relative;left:5px">
-                </div>
-                <div class="info-card">
-                    <h4>Tweed Overshirt</h4>
-                    <h4 style="position:relative;left: 20%;">$94</h4>
-                </div>
-            </div>
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/designedhoodie.png" alt="" srcset="" style="position:relative; left:10px">
-                </div>
-                <div class="info-card">
-                    <h4>Wou Hoodie</h4>
-                    <h4 style="position:relative;left: 30%;">$103</h4>
-                </div>
-            </div>
-          
-            <div class="holder">
-                <div class="item">
-                    <img id="img" src="/pics/babygirljumpsuit.png" alt="" srcset="" style="position:relative; left:45px">
-                </div>
-                <div class="info-card">
-                    <h4>Baby Girl Mini-Dress</h4>
-                    <h4 style="position:relative;left: 7%;">$123</h4>
-                </div>
-            </div>
-          
-        </div>
-       
 
+      <table>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="hmgoepprod.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>H&M CLASSIC SHIRT</h4>
+                            <p>● Color: Blue</p>
+                            <p>● Textile: Polyester</p>
+                            <p>● Male</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$13</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="tweed overshirt.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Tweed Overshirt</h4>
+                            <p>● Color: Grey</p>
+                            <p>● Textile: Jute</p>
+                            <p>● Male</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$123</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="sweater.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Sweater</h4>
+                            <p>● Color: White</p>
+                            <p>● Textile: Wool</p>
+                            <p>● Neutral</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$23</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="shorttextureddress.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Short Texture Dress</h4>
+                            <p>● Color: Grey</p>
+                            <p>● Textile: Jute</p>
+                            <p>● Female</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$31</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="S2.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Black Cotton Dress</h4>
+                            <p>● Color: Dark-Aqua-Green</p>
+                            <p>● Textile: Brocade</p>
+                            <p>● Male</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$53</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="OS.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>BLACK Hoody</h4>
+                            <p>● Color: Black</p>
+                            <p>● Textile: Wool</p>
+                            <p>● Male</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$1</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="N.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Normal Tshirt</h4>
+                            <p>● Color: Black</p>
+                            <p>● Textile: Fleece</p>
+                            <p>● Male</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$22</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="lj2.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Light Jeans</h4>
+                            <p>● Color: Dark-Blue-Fade</p>
+                            <p>● Textile: Denimn</p>
+                            <p>● Male</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$32</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="L.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Ashish Ranjan Singh Special</h4>
+                            <p>● Color: Goa-Blue</p>
+                            <p>● Textile: Cotton</p>
+                            <p>● Male</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$123</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="girlviscousedress.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Viscouse Dress</h4>
+                            <p>● Color: Black-White</p>
+                            <p>● Textile: Fleece</p>
+                            <p>● Female</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$45</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="girlskirt.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Skirt</h4>
+                            <p>● Color: Black</p>
+                            <p>● Textile: Linen</p>
+                            <p>● Female</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$123</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="girlribbedcottontop.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Ribbed Cotton Top</h4>
+                            <p>● Color: Black-White Striped</p>
+                            <p>● Textile: Brocade</p>
+                            <p>● Female</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$11</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="girlpeasant dress.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>Peasant Dress</h4>
+                            <p>● Color: Pink</p>
+                            <p>● Textile: Designer</p>
+                            <p>● Toddlers</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$27</h1>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="holder">
+                        <div class="item">
+                            <img id="img" src="girlonepieceshortdress.png" alt="" srcset="">
+                        </div>
+                        <div class="info-card">
+                            <h4>One Piece Short Dress</h4>
+                            <p>● Color: Black</p>
+                            <p>● Textile: Fleece</p>
+                            <p>● Female</p>
+                            <button class="addToCart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="price">
+                        <h1>$123</h1>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+      </table>
         <footer>
             <div id="logo" style="color: rgba(240, 248, 255, 0.645);margin-left:35px ;">PRIME•PICK
   
