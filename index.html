@@ -13,6 +13,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
   $(document).ready(function(){
+    $("button,input,a").mouseenter(function(){
+      $(".custom").css({
+        "height":"130px",
+        "width":"130px",
+      })
+    })
+    $("button,input,a").mouseleave(function(){
+      $(".custom").css({
+        "height":"100px",
+        "width":"100px",
+      })
+    })
       $("input").click(function(){
           window.location.href="searchTable.html";
       })
